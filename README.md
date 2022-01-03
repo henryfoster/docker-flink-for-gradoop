@@ -5,7 +5,9 @@
 3. start eines Flinkjobs `./run-job.sh class jar parallelism`
 
 z.B. `./run-job.sh org.gradoop.tutorial.operators.subgraph.SubgraphTutorial_1 gradoop-tutorial/target/gradoop-tutorial-1.0.jar 24`
+
 Der parallelism Wert ist optional.
+
 Für Logging: `./run-job.sh org.gradoop.tutorial.operators.subgraph.SubgraphTutorial_1 gradoop-tutorial/target/gradoop-tutorial-1.0.jar 24 >> log.log`
 
 Ein Testdatensatz befindet sich im orig Ordner. Dieser stammt aus folgender Repository: https://github.com/dbs-leipzig/gradoop-tutorial
