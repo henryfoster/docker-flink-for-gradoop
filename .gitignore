@@ -1,0 +1,5 @@
+flink/
+gradoop-tutorial/
+ldbc_sample/
+/start-jobmanager.sh
+/start-taskmanager.sh

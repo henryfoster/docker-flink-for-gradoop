@@ -1,0 +1,3 @@
+jobmanager.rpc.address: jobmanager
+taskmanager.memory.process.size: 8g
+taskmanager.numberOfTaskSlots: 1

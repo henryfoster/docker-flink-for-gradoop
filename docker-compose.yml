@@ -1,0 +1,39 @@
+networks:
+  flink-network:
+
+services:
+  jobmanager:
+    image: flink:latest
+    volumes:
+      - /tmp/gradoop-input:/tmp/gradoop-input
+      - /tmp/gradoop-output:/tmp/gradoop-output
+    command: jobmanager
+    networks:
+      - flink-network
+    ports:
+      - 8081:8081
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.memory.process.size: ${TASKMANGER_MEMORY_PROCESS_SIZE}
+        taskmanager.numberOfTaskSlots: ${TASKMANGER_NUMBER_OF_TASK_SLOTS}
+
+  taskmanager:
+    image: flink:latest
+    volumes:
+      - /tmp/gradoop-input:/tmp/gradoop-input
+      - /tmp/gradoop-output:/tmp/gradoop-output
+    command: taskmanager
+    networks:
+      - flink-network
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        taskmanager.memory.process.size: ${TASKMANGER_MEMORY_PROCESS_SIZE}
+        taskmanager.numberOfTaskSlots: ${TASKMANGER_NUMBER_OF_TASK_SLOTS}
+    depends_on:
+      - jobmanager
+    cpuset: ${CPUSET}
+    scale: ${SCALE}
